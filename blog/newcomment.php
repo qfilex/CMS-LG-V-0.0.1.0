@@ -1,6 +1,9 @@
+
 <?php
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
+//Pull username, generate new ID and hash password
+session_start();
+$id_post=$_SESSION["id_post"];
+echo $id_post;
 try{
     $pdo = new PDO("mysql:host=localhost;dbname=utilizatori", "root", "");
     // Set the PDO error mode to exception
@@ -8,16 +11,15 @@ try{
 } catch(PDOException $e){
     die("ERROR: Could not connect. " . $e->getMessage());
 }
- 
 
  try{
-$sql = "INSERT INTO posts (title, content , creation_date) VALUES (:title, :content , :time)";
+$sql = "INSERT INTO comments (content,comment,id_post) VALUES (:content,:comment,$id_post)";
     $stmt = $pdo->prepare($sql);
-    
+   /// include ('comments.php');
+//echo $id_post;
     // bind parameters to statement
-    $stmt->bindParam(':title', $_REQUEST['title']);
     $stmt->bindParam(':content', $_REQUEST['content']);
-    $stmt->bindParam(':time',date("Y-m-d h:i:sa"));
+    $stmt->bindParam(':comment',date("Y-m-d h:i:sa"));
     
     // execute the prepared statement
     $stmt->execute();
@@ -25,7 +27,6 @@ $sql = "INSERT INTO posts (title, content , creation_date) VALUES (:title, :cont
 } catch(PDOException $e){
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
- 
-// Close connection
-unset($pdo);
+
 ?>
+

@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
 /*
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -46,6 +48,8 @@ include('core/Comment.class.php');
                 					 <p>
                 					 <?php echo htmlspecialchars($comment['owner']); ?>
                 					 <i>commented on <?php echo htmlspecialchars($comment['comment']); ?></i>
+                                                                         <i>with <?php echo htmlspecialchars($comment['content']); ?></i>
+
                 					 </p> 
                 		<?php }
                 	} else {
@@ -59,13 +63,27 @@ include('core/Comment.class.php');
                 <?php } 
          
                 ?>
-                
-    
+
+      
+     <form action='newcomment.php' method="POST">
+     <p>Leave a comment</p> 
+
+    <textarea rows="4" cols="50" type="text" class="form-control" name="content"></textarea>
+  <button name="Submit" id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+  <p></p>
+  
+     </form>   
+   
+<?php
+
+
+$_SESSION["id_post"]=$id_post; 
+  ?>
 </div>
 
 
 <div id="footer">
-© 2016
+
 </div>
 
 </body>
