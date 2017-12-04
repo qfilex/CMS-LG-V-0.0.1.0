@@ -46,6 +46,7 @@ include('core/Comment.class.php');
                 					 <p>
                 					 <?php echo htmlspecialchars($comment['owner']); ?>
                 					 <i>commented on <?php echo htmlspecialchars($comment['comment']); ?></i>
+
                 					 </p> 
                 		<?php }
                 	} else {
@@ -60,6 +61,7 @@ include('core/Comment.class.php');
          
                 ?>
                 
+                <?php echo $id_post;?>
     
 </div>
 
