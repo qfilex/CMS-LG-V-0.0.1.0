@@ -1,0 +1,157 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<!--Add adaugam quill editorul de texte  , trebuuie de schimbat pe sursa locala -->
+<link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+<link href="//cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+
+<nav class="navbar navbar-white bg-maincol">
+  <span class="navbar-brand mb-0 h1">QBlog CMS</span>
+
+  <p class="navbar-text navbar-right">                <a href="../login/logout.php" class="btn btn-secondary" id=""> <span class="glyphicon glyphicon-log-out"></span> Log out</a></p>
+
+</nav>
+
+
+
+<div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                      Numele Sitelui
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Articole</a>
+                </li>
+                <li>
+                    <a href="http://localhost:9999/PHP-Login-master/cp/newpost/newpost.html">Creaza articol</a>
+                </li>
+                <li>
+                    <a href="#">Pagini</a>
+                </li>
+                <li>
+                    <a href="#">Creaza pagina</a>
+                </li>
+                <li>
+                    <a href="#">Costumizare</a>
+                </li>
+                  <li>
+                    <a href="#">Despre CMS</a>
+                </li>
+              
+            </ul>
+        </div>
+
+
+<div id="page-content-wrapper">
+            <div class="container-fluidv align-items-center">
+                
+                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
+
+
+
+
+
+
+            </div>
+        </div>
+<div class="container">
+	<div class="row justify-content-center">
+	    
+	    <div class="col-md-8 align-self-center">
+	        
+    		<h1>Create post</h1>
+    		
+    		<form action="insert.php" method="POST">
+    		    
+    		    
+    		    
+    		    <div class="form-group">
+    		        <label for="title">Title <span class="require">*</span></label>
+    		        <input type="text" class="form-control" name="title" />
+    		                      <label for="content">Content <span class="require">*</span></label>
+
+                   <textarea rows="4" cols="50" type="text" class="form-control" name="content" /></textarea>
+
+
+                </div>
+    		    
+    		    <div class="form-group">
+    		        <labdel for="description">Description</label>
+    		        <div id="editor-container" name="content">
+</div>
+    		    </div>
+    		    
+    		    <div class="form-group">
+    		        <p><span class="require">*</span> - required fields</p>
+    		    </div>
+    		    
+    		    <div class="form-group">
+    		        <button type="submit" class="btn btn-primary" action="passText">
+    		            Create
+    		        </button>
+    		        <button class="btn btn-default">
+    		            Cancel
+    		        </button>
+    		    </div>
+    		    
+    		</form>
+		</div>
+		
+	</div>
+</div>
+
+
+<!--Add adaugam quill editorul de texte  , trebuuie de schimbat pe sursa locala -->
+
+<script src="//cdn.quilljs.com/1.0.0/quill.js"></script>
+
+
+<script>
+var quill = new Quill('#editor-container', {
+  modules: {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ['bold', 'italic', 'underline'],
+      ['image', 'code-block']
+    ]
+  },
+  placeholder: 'Compose an epic...',
+  theme: 'snow'  // or 'bubble'
+});
+
+Quill.prototype.getHtml = function() {
+    console.log( this.container.firstChild.innerHTML);
+};
+
+quill.on('text-change', function() {
+ function passText(){
+  var justHtml = quill.root.innerHTML;
+console.log(justHtml);
+});
+}
+</script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+</body>
+
+
+</html>
