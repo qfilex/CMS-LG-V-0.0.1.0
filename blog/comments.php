@@ -48,7 +48,10 @@ include('core/Comment.class.php');
                 					 <p>
                 					 <?php echo htmlspecialchars($comment['owner']); ?>
                 					 <i>commented on <?php echo htmlspecialchars($comment['comment']); ?></i>
+<<<<<<< HEAD
                                                                          <i>with <?php echo htmlspecialchars($comment['content']); ?></i>
+=======
+>>>>>>> origin/master
 
                 					 </p> 
                 		<?php }
@@ -63,6 +66,7 @@ include('core/Comment.class.php');
                 <?php } 
          
                 ?>
+<<<<<<< HEAD
 
       
      <form action='newcomment.php' method="POST">
@@ -79,6 +83,11 @@ include('core/Comment.class.php');
 
 $_SESSION["id_post"]=$id_post; 
   ?>
+=======
+                
+                <?php echo $id_post;?>
+    
+>>>>>>> origin/master
 </div>
 
 

@@ -14,24 +14,43 @@ $post = new Post();
 <head>
     <meta charset="utf-8" />
     <meta name="description" content="My blog for testing">
-    <link rel="stylesheet" type="text/css" href="design.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
 </head>
 <body>
 
 <div id="header">
-<h1><a href="index.php">My Super Blog!</a></h1>
+<?php include 'header.php' ?>
 </div>
 
-<div id="section">
+<div id="section" style="margin-top:200px">
 
 <?php if (count($post->getPosts()) > 0) { ?>
 Last posts:
     <?php foreach($post->getPosts() as $key=>$post) { ?>
-                <h2><a href="comments.php?id_post=<?php echo $post['id']; ?>"><?php echo htmlspecialchars($post['title']); ?> | On: <?php echo htmlspecialchars($post['creation_date']); ?></a></h2>
-                <p><?php echo htmlspecialchars($post['content']); ?></p>
-                <a href="comments.php?id_post=<?php echo $post['id']; ?>">Comments</a>
-                <hr>
+
+
+                
+<div class="col-md-8">
+
+<div class="card mb-4">
+            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            <div class="card-body">
+ <h2><a href="comments.php?id_post=<?php echo $post['id']; ?>"><?php echo htmlspecialchars($post['title']); ?> </a> </h2>
+                <p class="card-text"><?php echo htmlspecialchars($post['content']); ?></p>
+              <a href="comments.php?id_post=<?php echo $post['id']; ?>" class="btn btn-primary">Read More →</a>
+            </div>
+            <div class="card-footer text-muted">
+              Posted on <?php echo htmlspecialchars($post['creation_date']); ?> by
+              <a href="#">Start Bootstrap</a>
+            </div>
+          </div>
+
+</div>
+
+
         <?php } ?>
+
 <?php } else { ?>
            please post content!
 <?php } ?>
