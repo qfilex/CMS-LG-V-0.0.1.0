@@ -11,17 +11,20 @@ try{
  
 
  try{
-$sql = "INSERT INTO posts (title, content , creation_date) VALUES (:title, :content , :time)";
+$sql = "INSERT INTO posts (title,image_url, content , creation_date) VALUES (:title,:image_url, :content , :time)";
     $stmt = $pdo->prepare($sql);
     
     // bind parameters to statement
     $stmt->bindParam(':title', $_REQUEST['title']);
+    $stmt->bindParam(':image_url', $_REQUEST['image_url']);
     $stmt->bindParam(':content', $_REQUEST['content']);
     $stmt->bindParam(':time',date("Y-m-d h:i:sa"));
     
     // execute the prepared statement
     $stmt->execute();
-    echo "Records inserted successfully.";
+echo '<script type="text/javascript">
+           window.location = "../../blog"
+      </script>';
 } catch(PDOException $e){
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }

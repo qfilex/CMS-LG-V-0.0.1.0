@@ -34,7 +34,7 @@ Last posts:
 <div class="col-md-8">
 
 <div class="card mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            <img class="card-img-top" src="<?php echo htmlspecialchars($post['image_url']); ?>" alt="Card image cap">
             <div class="card-body">
  <h2><a href="comments.php?id_post=<?php echo $post['id']; ?>"><?php echo htmlspecialchars($post['title']); ?> </a> </h2>
                 <p class="card-text"><?php echo htmlspecialchars($post['content']); ?></p>
