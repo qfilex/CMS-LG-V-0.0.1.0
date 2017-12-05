@@ -75,6 +75,11 @@ include('core/Comment.class.php');
 <?php
 if(isset($_POST['Submit'])){ //check if form was submitted
 //Pull username, generate new ID and hash password
+<<<<<<< HEAD
+//session_start();
+$id_post=$_SESSION["id_post"];
+=======
+>>>>>>> origin/master
 echo $id_post;
 try{
     $pdo = new PDO("mysql:host=localhost;dbname=utilizatori", "admin", "1");
