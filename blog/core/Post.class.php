@@ -4,6 +4,7 @@ class Post extends BaseTable {
 
     var $title = null;
     var $content = null;
+    var $image_url = null;
     var $creation_date = null;
     var $table = "posts";
     var $comments = array();

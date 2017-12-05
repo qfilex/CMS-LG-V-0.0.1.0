@@ -1,5 +1,4 @@
 <?php 
-session_start();
 
 /*
 ini_set('display_errors', 1);
@@ -21,11 +20,10 @@ include('core/Comment.class.php');
 <body>
 
 <div id="header">
-<h1><a href="index.php">My Super Blog!</a></h1>
-
+<?php include 'header.php' ?>
 </div>
 
-<div id="section">
+<div id="section" style="margin-top: 200px;">
 <a href="index.php"> </a>  
                 <?php 
                 if(!isset($_GET['id_post'])){
@@ -39,7 +37,11 @@ include('core/Comment.class.php');
                     $commentList = $comment->getCommentsbyPostId($id_post);
         ?>                
                  <?php if($post->title!=null) { ?>
+
+                             <img class="card-img-top" src="<?php echo htmlspecialchars($post->image_url); ?>" alt="Card image cap">
+
                     <h2><?php echo htmlspecialchars($post->title); ?></h2>
+
                     <p><?php echo htmlspecialchars($post->content); ?></p>
                     <hr>
                     <?php 
@@ -69,8 +71,11 @@ include('core/Comment.class.php');
 <?php
 if(isset($_POST['Submit'])){ //check if form was submitted
 //Pull username, generate new ID and hash password
+<<<<<<< HEAD
 //session_start();
 $id_post=$_SESSION["id_post"];
+=======
+>>>>>>> origin/master
 echo $id_post;
 try{
     $pdo = new PDO("mysql:host=localhost;dbname=utilizatori", "admin", "1");
@@ -91,6 +96,8 @@ $sql = "INSERT INTO comments (content,comment,id_post) VALUES (:content,:comment
     
     // execute the prepared statement
     $stmt->execute();
+    header("Refresh:0");
+
 } catch(PDOException $e){
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
@@ -110,7 +117,6 @@ $sql = "INSERT INTO comments (content,comment,id_post) VALUES (:content,:comment
 <?php
 
 
-$_SESSION["id_post"]=$id_post; 
   ?>
                 
                 <?php echo $id_post;?>
