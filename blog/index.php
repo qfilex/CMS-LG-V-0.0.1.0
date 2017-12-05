@@ -49,7 +49,7 @@ function get_snippet($text, $count=50)
 Last posts:
     <?php foreach($post->getPosts() as $key=>$post) { ?>
 
-<?php $snipet = htmlspecialchars($post['content']) ;
+<?php $snipet = ($post['content']) ;
  $pot=get_snippet( $snipet );
 
 ?>

@@ -17,7 +17,7 @@ $sql = "INSERT INTO posts (title,image_url, content , creation_date) VALUES (:ti
     // bind parameters to statement
     $stmt->bindParam(':title', $_REQUEST['title']);
     $stmt->bindParam(':image_url', $_REQUEST['image_url']);
-    $stmt->bindParam(':content', $_REQUEST['content']);
+    $stmt->bindParam(':content', htmlspecialchars_decode(stripslashes ($_REQUEST['content'])));
     $stmt->bindParam(':time',date("Y-m-d h:i:sa"));
     
     // execute the prepared statement

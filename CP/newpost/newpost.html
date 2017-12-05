@@ -6,6 +6,7 @@
 <!--Add adaugam quill editorul de texte  , trebuuie de schimbat pe sursa locala -->
 <link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
 <link href="//cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">
+<link rel="stylesheet" href="dist/ui/trumbowyg.min.css">
 
 
 </head>
@@ -77,12 +78,12 @@
     		    
     		    <div class="form-group">
     		        <label for="title">Title <span class="require">*</span></label>
-    		        <input type="text" class="form-control" name="title" />
+    		        <input type="text" class="form-control"  name="title" />
     		                      <label for="content">Content <span class="require">*</span></label>
 <label for="image_url">Image_url <span class="require">*</span></label>
                     <input type="text" class="form-control" name="image_url" />
                                   <label for="content">Content <span class="require">*</span></label>
-                   <textarea rows="4" cols="50" type="text" class="form-control" name="content" /></textarea>
+                   <textarea rows="4" cols="50" type="text" class="form-control" id="trumbowyg-demo" name="content" /></textarea>
 
                 </div>
     		    
@@ -114,44 +115,41 @@
 
 <!--Add adaugam quill editorul de texte  , trebuuie de schimbat pe sursa locala -->
 
-<script src="//cdn.quilljs.com/1.0.0/quill.js"></script>
 
 
-<script>
-var quill = new Quill('#editor-container', {
-  modules: {
-    toolbar: [
-      [{ header: [1, 2, false] }],
-      ['bold', 'italic', 'underline'],
-      ['image', 'code-block']
-    ]
-  },
-  placeholder: 'Compose an epic...',
-  theme: 'snow'  // or 'bubble'
+
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+
+    <script src="dist/trumbowyg.min.js"></script>
+
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+$('#trumbowyg-demo').trumbowyg({
+    btns: [
+        ['viewHTML'],
+        ['undo', 'redo'], // Only supported in Blink browsers
+        ['formatting'],
+        ['strong', 'em', 'del'],
+        ['superscript', 'subscript'],
+        ['link'],
+        ['insertImage'],
+        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+        ['unorderedList', 'orderedList'],
+        ['horizontalRule'],
+        ['removeformat'],
+        ['fullscreen']
+    ],
+    autogrow: true
 });
-
-Quill.prototype.getHtml = function() {
-    console.log( this.container.firstChild.innerHTML);
-};
-
-quill.on('text-change', function() {
- function passText(){
-  var justHtml = quill.root.innerHTML;
-console.log(justHtml);
-});
-}
 </script>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
+
+
+
 </body>
 
 

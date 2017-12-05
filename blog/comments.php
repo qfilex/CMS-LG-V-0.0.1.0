@@ -24,6 +24,8 @@ include('core/Comment.class.php');
 </div>
 
 <div id="section" style="margin-top: 200px;">
+      <div class="row ">
+<div class="col offset-md-3 col-6 post-body">
 <a href="index.php"> </a>  
                 <?php 
                 if(!isset($_GET['id_post'])){
@@ -42,7 +44,7 @@ include('core/Comment.class.php');
 
                     <h2><?php echo htmlspecialchars($post->title); ?></h2>
 
-                    <p><?php echo htmlspecialchars($post->content); ?></p>
+                    <p><?php echo ($post->content); ?></p>
                     <hr>
                     <?php 
                     if(count($commentList) >0){
@@ -122,7 +124,9 @@ $sql = "INSERT INTO comments (content,comment,id_post) VALUES (:content,:comment
   ?>
                 
                 <?php echo $id_post;?>
-    
+</div>
+      </div>
+
 </div>
 
 
