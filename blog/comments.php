@@ -69,7 +69,7 @@ include('core/Comment.class.php');
 <?php
 if(isset($_POST['Submit'])){ //check if form was submitted
 //Pull username, generate new ID and hash password
-session_start();
+//session_start();
 $id_post=$_SESSION["id_post"];
 echo $id_post;
 try{
