@@ -47,13 +47,17 @@ include('core/Comment.class.php');
                     <?php 
                     if(count($commentList) >0){
                         foreach ($commentList as $key=>$comment){?>
-                                     <p>
+                                   <div class="card comments">
+  <div class="card-body">
+                                     <p class="comment_text">
                                      <?php echo htmlspecialchars($comment['owner']); ?>
-                                     <i>commented on <?php echo htmlspecialchars($comment['comment']); ?></i>
-                                                                         <i>with <?php echo htmlspecialchars($comment['content']); ?></i>
+                                     <i class="comment_text">commented on <?php echo htmlspecialchars($comment['comment']); ?></i>
+                                                                         <i class="comment_text">with <?php echo htmlspecialchars($comment['content']); ?></i>
 
 
                                      </p> 
+                                 </div>
+                             </div>
                         <?php }
                     } else {
                 
@@ -103,8 +107,8 @@ $sql = "INSERT INTO comments (content,comment,id_post) VALUES (:content,:comment
      <form action='#' method="POST">
      <p>Leave a comment</p> 
 
-    <textarea rows="4" cols="50" type="text" class="form-control" name="content"></textarea>
-  <button name="Submit" id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+    <textarea rows="4" cols="50" type="text" class="form-control" name="content" style="margin-bottom:20px"></textarea>
+  <button name="Submit" id="submit" class="btn btn-lg btn-primary " type="submit">Submit</button>
   <p></p>
   
      </form>   

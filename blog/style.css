@@ -15,6 +15,20 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   padding: 0;
   vertical-align: baseline; }
 
+
+
+
+
+.comments{
+  margin: 20px !important;
+}
+
+.comment_text{
+  color: black;
+}
+
+
+
 body {
   line-height: 1; }
 
