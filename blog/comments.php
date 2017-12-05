@@ -54,7 +54,7 @@ include('core/Comment.class.php');
 
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" >
       <div class="container">
         <a class="navbar-brand" href="index.php">SURF</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -114,16 +114,21 @@ include('core/Comment.class.php');
       </div>
     </article>
 
+<hr>
+<div class="comments" style="width:80%; margin-left:10%;">
 
-
+  <h3>Comments</h3>
 <?php 
                   if(count($commentList) >0){
                     foreach ($commentList as $key=>$comment){?>
-                           <p>
-                           <?php echo htmlspecialchars($comment['owner']); ?>
+                    <div class="panel  panel-primary">
+  
+                            <div class="panel-heading"> <h3 class="panel-title"><?php echo htmlspecialchars($comment['owner']); ?></h3> </div>
+                           
                            <i>comment :  <?php echo htmlspecialchars($comment['comment']); ?></i>
-                           <i> <?php echo htmlspecialchars($comment['content']); ?></i>
-                           </p> 
+                          <div class="panel-body "> <i> <?php echo htmlspecialchars($comment['content']); ?></i>
+                                                   </div>
+                       </div>
                     <?php }
                   } else {
                 
@@ -136,6 +141,7 @@ include('core/Comment.class.php');
                 <?php } 
          
                 ?>
+                </div>
     <hr>
 <?php
 if(isset($_POST['Submit'])){ //check if form was submitted
@@ -170,7 +176,8 @@ $sql = "INSERT INTO comments (content,comment,id_post) VALUES (:content,:comment
 
 
 
-     <form action='#' method="POST">
+     <form action='#' method="POST" style="    width: 60%;
+    margin-left: 20%;">
      <p>Leave a comment</p> 
 
     <textarea rows="4" cols="50" type="text" class="form-control" name="content" style="margin-bottom:20px"></textarea>
