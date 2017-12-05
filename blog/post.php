@@ -21,7 +21,7 @@ include('core/Comment.class.php');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php echo ($post->title); ?></title>
+    <title><?php echo htmlspecialchars($post->title); ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -56,7 +56,7 @@ include('core/Comment.class.php');
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="index.php">SURF</a>
+        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -81,7 +81,7 @@ include('core/Comment.class.php');
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url(<?php echo htmlspecialchars($post->image_url); ?>)">
+    <header class="masthead" style="background-image: url('img/post-bg.jpg')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
@@ -90,7 +90,7 @@ include('core/Comment.class.php');
               <h1><?php echo htmlspecialchars($post->title); ?></h1>
               
               <span class="meta">Posted by
-                <a href="#">USER</a>
+                <a href="#">Start Bootstrap</a>
                 on <?php echo htmlspecialchars($post->creation_date); ?></span>
             </div>
           </div>
@@ -108,7 +108,7 @@ include('core/Comment.class.php');
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
-            <p><?php echo ($post->content); ?></p>
+            <p><?php echo htmlspecialchars($post->content); ?></p>
           </div>
         </div>
       </div>
@@ -121,8 +121,7 @@ include('core/Comment.class.php');
                     foreach ($commentList as $key=>$comment){?>
                            <p>
                            <?php echo htmlspecialchars($comment['owner']); ?>
-                           <i>comment :  <?php echo htmlspecialchars($comment['comment']); ?></i>
-                           <i> <?php echo htmlspecialchars($comment['content']); ?></i>
+                           <i>commented on <?php echo htmlspecialchars($comment['comment']); ?></i>
                            </p> 
                     <?php }
                   } else {
@@ -137,49 +136,43 @@ include('core/Comment.class.php');
          
                 ?>
     <hr>
-<?php
-if(isset($_POST['Submit'])){ //check if form was submitted
-//Pull username, generate new ID and hash password
-echo $id_post;
-try{
-    $pdo = new PDO("mysql:host=localhost;dbname=utilizatori", "admin", "1");
-    // Set the PDO error mode to exception
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e){
-    die("ERROR: Could not connect. " . $e->getMessage());
-}
- try{
-$sql = "INSERT INTO comments (content,comment,id_post) VALUES (:content,:comment,$id_post)";
-    $stmt = $pdo->prepare($sql);
-   /// include ('comments.php');
-//echo $id_post;
-    // bind parameters to statement
-    $stmt->bindParam(':content', $_REQUEST['content']);
-    $stmt->bindParam(':comment',date("Y-m-d h:i:sa"));
-    
-    // execute the prepared statement
-    $stmt->execute();
-    header("Refresh:0");
-} catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
-}
-?>
 
-      
-
-
-
-     <form action='#' method="POST">
-     <p>Leave a comment</p> 
-
-    <textarea rows="4" cols="50" type="text" class="form-control" name="content" style="margin-bottom:20px"></textarea>
-  <button name="Submit" id="submit" class="btn btn-lg btn-primary " type="submit">Submit</button>
-  <p></p>
-  
- 
     <!-- Footer -->
-    
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; Your Website 2017</p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
