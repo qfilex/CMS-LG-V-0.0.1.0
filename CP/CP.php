@@ -33,7 +33,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">Artsicole</a>
+                    <a href="../cp/newpost/allposts.html">Articole</a>
                 </li>
                 <li>
                     <a href="../cp/newpost/newpost.html">Creaza articol</a>

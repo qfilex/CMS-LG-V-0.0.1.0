@@ -5,7 +5,7 @@ session_start();
 $id_post=$_SESSION["id_post"];
 echo $id_post;
 try{
-    $pdo = new PDO("mysql:host=localhost;dbname=utilizatori", "root", "");
+    $pdo = new PDO("mysql:host=localhost;dbname=utilizatori", "admin", "1");
     // Set the PDO error mode to exception
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e){
@@ -23,7 +23,6 @@ $sql = "INSERT INTO comments (content,comment,id_post) VALUES (:content,:comment
     
     // execute the prepared statement
     $stmt->execute();
-    echo "Records inserted successfully.";
 } catch(PDOException $e){
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
