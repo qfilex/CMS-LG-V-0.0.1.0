@@ -27,7 +27,7 @@ Try it Yourself »
 <header>
     <div class="container clearfix">
         <h1 id="logo">
-            <a href="http://localhost/CMS%20LG%20V%200.0.1.0/blog/index.php">Pratik
+            <a href="http://localhost/CMS%20LG%20V%200.0.1.0/blog/index.php">SURF
         </h1>
         <nav>
             <a href="">Lorem</a>

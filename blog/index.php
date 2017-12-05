@@ -19,6 +19,26 @@ $post = new Post();
 </head>
 <body>
 
+
+<?php
+function get_snippet($text, $count=50)
+{
+    $words = explode(' ', $text);
+
+    $result = '';
+    for ($i = 0; $i < $count && isset($words[$i]); $i++) {
+        $result .=" ".$words[$i];
+    }
+
+    return $result;
+}
+
+
+
+ ?>
+
+
+
 <div id="header">
 <?php include 'header.php' ?>
 </div>
@@ -29,6 +49,10 @@ $post = new Post();
 Last posts:
     <?php foreach($post->getPosts() as $key=>$post) { ?>
 
+<?php $snipet = htmlspecialchars($post['content']) ;
+ $pot=get_snippet( $snipet );
+
+?>
 
                 
 <div class="col-md-8">
@@ -37,12 +61,12 @@ Last posts:
             <img class="card-img-top" src="<?php echo htmlspecialchars($post['image_url']); ?>" alt="Card image cap">
             <div class="card-body">
  <h2><a href="comments.php?id_post=<?php echo $post['id']; ?>"><?php echo htmlspecialchars($post['title']); ?> </a> </h2>
-                <p class="card-text"><?php echo htmlspecialchars($post['content']); ?></p>
+                <p class="card-text"><?php echo $pot ?></p>
               <a href="comments.php?id_post=<?php echo $post['id']; ?>" class="btn btn-primary">Read More →</a>
             </div>
             <div class="card-footer text-muted">
               Posted on <?php echo htmlspecialchars($post['creation_date']); ?> by
-              <a href="#">Start Bootstrap</a>
+              <a href="#">USER</a>
             </div>
           </div>
 
@@ -58,7 +82,7 @@ Last posts:
 
 
 <div id="footer">
-© 2016
+© v0.0.1.7
 </div>
 
 </body>
