@@ -1,5 +1,4 @@
 <?php 
-session_start();
 
 /*
 ini_set('display_errors', 1);
@@ -69,8 +68,6 @@ include('core/Comment.class.php');
 <?php
 if(isset($_POST['Submit'])){ //check if form was submitted
 //Pull username, generate new ID and hash password
-session_start();
-$id_post=$_SESSION["id_post"];
 echo $id_post;
 try{
     $pdo = new PDO("mysql:host=localhost;dbname=utilizatori", "admin", "1");
@@ -91,6 +88,8 @@ $sql = "INSERT INTO comments (content,comment,id_post) VALUES (:content,:comment
     
     // execute the prepared statement
     $stmt->execute();
+    header("Refresh:0");
+
 } catch(PDOException $e){
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
@@ -110,7 +109,6 @@ $sql = "INSERT INTO comments (content,comment,id_post) VALUES (:content,:comment
 <?php
 
 
-$_SESSION["id_post"]=$id_post; 
   ?>
                 
                 <?php echo $id_post;?>
