@@ -20,57 +20,11 @@ if(isset($_SESSION['username'])){
 <body>
 
 
-<nav class="navbar navbar-white bg-maincol">
-  <span class="navbar-brand mb-0 h1">QBlog CMS</span>
-
-  <p class="navbar-text navbar-right">                <a href="../login/logout.php" class="btn btn-secondary" id=""> <span class="glyphicon glyphicon-log-out"></span> Log out</a></p>
-
-</nav>
-
-
-
-<div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                      Numele Sitelui
-                    </a>
-                </li>
-                <li>
-                    <a href="#">Articole</a>
-                </li>
-                <li>
-                    <a href="http://localhost:9999/PHP-Login-master/cp/newpost/newpost.html">Creaza articol</a>
-                </li>
-                <li>
-                    <a href="#">Pagini</a>
-                </li>
-                <li>
-                    <a href="#">Creaza pagina</a>
-                </li>
-                <li>
-                    <a href="#">Costumizare</a>
-                </li>
-                  <li>
-                    <a href="#">Despre CMS</a>
-                </li>
-              
-            </ul>
-        </div>
-
-
-<div id="page-content-wrapper">
-            <div class="container-fluidv align-items-center">
-                
-                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
+<?php include_once('../header.php'); ?> 
 
 
 
 
-
-
-            </div>
-        </div>
 <div class="container">
 	<div class="row justify-content-center">
 	    
@@ -162,6 +116,5 @@ $('#trumbowyg-demo').trumbowyg({
 </html>
 
 <?php
-} 
-?>
+} ?>
 
