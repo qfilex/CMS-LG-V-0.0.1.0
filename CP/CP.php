@@ -36,7 +36,7 @@
                     <a href="../cp/newpost/allposts.html">Articole</a>
                 </li>
                 <li>
-                    <a href="../cp/newpost/newpost.html">Creaza articol</a>
+                    <a href="../cp/newpost/newpost.php">Creaza articol</a>
                 </li>
                 <li>
                     <a href="#">Pagini</a>
