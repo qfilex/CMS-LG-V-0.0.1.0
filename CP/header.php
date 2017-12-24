@@ -12,8 +12,8 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
-                      Numele Sitelui
+                    <a href="http://localhost:8888/CMS%20LG%20V%200.0.1.0/blog/">
+                      Vezi Site-ul
                     </a>
                 </li>
                 <li>
